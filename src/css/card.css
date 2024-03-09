@@ -1,0 +1,91 @@
+.list-card {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    height: 500px;
+    width: 750px;
+    gap: 10px;
+}
+
+body {
+    background-color: brown;
+}
+.App{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+p {
+    letter-spacing: 3px;
+}
+
+button {
+    padding-left: 5px;
+    margin-left: 20px;
+}
+
+.card {
+    position: relative;
+    height: 150px;
+    width: 100px;
+}
+
+.card img {
+    width: 100%;
+    display: block;
+}
+
+.card .Face {
+    transform: rotateY(90deg);
+    position: absolute;
+    transition: all ease-in 0.2s;
+}
+
+.flipped .Face {
+    transform: rotateY(0deg);
+    transition-delay: 0.2s;
+}
+
+.card .Dos {
+    transition: all ease-in 0.2s;
+    transition-delay: 0.2s;
+}
+
+.flipped .Dos {
+    transform: rotateY(90deg);
+    transition-delay: 0s;
+}
+
+.visible {
+    display: block;
+}
+
+.invisible {
+    display: none;
+}
+
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #333;
+    color: white;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
