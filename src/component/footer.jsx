@@ -1,6 +1,7 @@
-const Footer = ({ nbTurn, timer }) => {
+const Footer = ({ nbTurn, timer, niveau }) => {
   return (
-    <footer>
+      <footer>
+          <p>Difficulté : {niveau}</p>
       <p>Nombre de tour : {nbTurn}</p>
       <p>timer : {timer}</p>
     </footer>

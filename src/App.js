@@ -17,7 +17,7 @@ function App () {
   const [intouchable, setIntouchable] = useState(false)
   const [timer, setTimer] = useState(0)
   const [win, setWin] = useState(false)
-  const [niveau, setNiveau] = useState('facile')
+  const [niveau, setNiveau] = useState('Facile')
 
   const facile = [{ src: canelo }, { src: ali }]
   const moyen = [{ src: crawford }, { src: inoue }]
@@ -26,13 +26,13 @@ function App () {
   const shuffleCards = () => {
     let shuffleCards
     switch (niveau) {
-      case 'facile':
+      case 'Facile':
         shuffleCards = [...facile, ...facile]
         break
-      case 'moyen':
+      case 'Moyen':
         shuffleCards = [...facile, ...moyen, ...facile, ...moyen]
         break
-      case 'difficile':
+      case 'Difficile':
         shuffleCards = [
           ...facile,
           ...moyen,
@@ -75,7 +75,7 @@ function App () {
     increment_nbTurn()
   }
   const checkWin = () => {
-    if (cards.every(card => card.matched === true)) {
+    if (cards.every(card => card.matched === true) && nbTurn > 0) {
       setWin(true)
       alert(
         'Vous avez gagné le niveau : ' +
@@ -112,10 +112,11 @@ function App () {
   useEffect(() => {
     checkWin()
   }, [cards])
+
   //timer
   useEffect(() => {
     let interval = null
-    if (!win) {
+    if (!win & nbTurn > 0) {
       interval = setInterval(() => {
         setTimer(timer => timer + 1)
       }, 1000)
@@ -130,9 +131,9 @@ function App () {
       <h1>Memory game</h1>
       <button onClick={shuffleCards}>Nouvelle partie</button>
       <div>
-        <button onClick={() => chooseLevel('facile')}>Facile</button>
-        <button onClick={() => chooseLevel('moyen')}>Moyen</button>
-        <button onClick={() => chooseLevel('difficile')}>Difficile</button>
+        <button onClick={() => chooseLevel('Facile')}>Facile</button>
+        <button onClick={() => chooseLevel('Moyen')}>Moyen</button>
+        <button onClick={() => chooseLevel('Difficile')}>Difficile</button>
       </div>
       <div className='list-card'>
         {cards.map(card => (
@@ -145,7 +146,7 @@ function App () {
           />
         ))}
       </div>
-      <Footer nbTurn={nbTurn} timer={timer} />
+      <Footer niveau={niveau} nbTurn={nbTurn} timer={timer} />
     </div>
   )
 }
