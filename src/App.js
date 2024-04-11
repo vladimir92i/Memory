@@ -124,7 +124,7 @@ function App () {
       clearInterval(interval)
     }
     return () => clearInterval(interval)
-  }, [win, timer])
+  }, [win,nbTurn])
 
   return (
     <div className='App'>
